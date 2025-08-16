@@ -172,49 +172,54 @@ var j002_trivial = (function(){
     }
     function _random(){
         const number1 = j005.getRandomNumber(1, 10);
-            const number2 = j005.getRandomNumber(1, 10);
-            const nodesNumber = document.querySelectorAll ( ".trivial__number");
-            j003.removeBorder()
-            this.classList.add("operator--selected");
-            nodesNumber[0].innerText = number1;
-            nodesNumber[1].innerText = number2;
-            _generateRandomOperator();
+        const number2 = j005.getRandomNumber(1, 10);
+        const nodesNumber = document.querySelectorAll ( ".trivial__number");
+        j003.removeBorder()
+        this.classList.add("operator--selected");
+        nodesNumber[0].innerText = number1;
+        nodesNumber[1].innerText = number2;
+        _generateRandomOperator();
     }
     function _setRandomOperator(){
         const nodeRandom = document.querySelector(".operatorRandom");
         nodeRandom.addEventListener("click", _random);
     }
-    return {
-        initOperator : function(){
-            _setOperator();
-            _setRandomOperator();
-            const number1 = j005.getRandomNumber(1, 10);
-            const number2 = j005.getRandomNumber(1, 10);
-            const nodesNumber = document.querySelectorAll (".trivial__number");
-            nodesNumber[0].innerText = number1;
-            nodesNumber[1].innerText = number2;
-        },
-        initClear : function(){
-            const nodeClear = document.querySelector(".clear")
-            nodeClear.addEventListener("click", j004.clearStats)
-        },
-        initAnswer : function(){
-            const nodeAnswer = document.querySelector(".trivial__answer");
-            nodeAnswer.addEventListener("keydown", _keydownResult); 
-            nodeAnswer.addEventListener("input" , _formatInput);
-        },
-        initRefresh : function(){
-            const nodeRefresh = document.querySelector(".refresh");
-            nodeRefresh.addEventListener("click", _refresh);
-        },
-        initStats : function(){
-            
-            const nodeRight = document.querySelector(".rightNumber");
-            nodeRight.innerText = 0; 
-            const nodeWrong = document.querySelector(".wrongNumber");
-            nodeWrong.innerText= 0;
+    function _initOperator(){
+        _setOperator();
+        _setRandomOperator();
+        const number1 = j005.getRandomNumber(1, 10);
+        const number2 = j005.getRandomNumber(1, 10);
+        const nodesNumber = document.querySelectorAll (".trivial__number");
+        nodesNumber[0].innerText = number1;
+        nodesNumber[1].innerText = number2;
+    }
+     function _initClear(){
+        const nodeClear = document.querySelector(".clear")
+        nodeClear.addEventListener("click", j004.clearStats)
+    }
+     function _initAnswer(){
+        const nodeAnswer = document.querySelector(".trivial__answer");
+        nodeAnswer.addEventListener("keydown", _keydownResult); 
+        nodeAnswer.addEventListener("input" , _formatInput);
+    }
+    function _initRefresh(){
+        const nodeRefresh = document.querySelector(".refresh");
+        nodeRefresh.addEventListener("click", _refresh);
+    }
+    function _initStats(){
+        const nodeRight = document.querySelector(".rightNumber");
+        nodeRight.innerText = 0; 
+        const nodeWrong = document.querySelector(".wrongNumber");
+        nodeWrong.innerText= 0;
         }
-       
+    return {
+        initAll : function(){
+            _initOperator();
+            _initClear();
+            _initAnswer();
+            _initRefresh();
+            _initStats();
+        },
     };
 })();
 var j002 = j002_trivial;
